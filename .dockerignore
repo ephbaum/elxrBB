@@ -1,0 +1,10 @@
+# .dockerignore
+_deps
+_build
+config/*.secret.exs
+config/prod.secret.exs
+.elixir_ls
+assets/node_modules
+test/test_helper.exs
+test/**/*_test.exs
+priv/repo
