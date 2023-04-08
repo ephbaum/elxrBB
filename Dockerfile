@@ -29,11 +29,7 @@ COPY . .
 # Compile the application
 RUN mix do compile
 
-# Install Node.js dependencies
-RUN npm install --prefix assets
-
 # Build the assets
-RUN npm run deploy --prefix assets
 RUN mix phx.digest
 
 # Expose the application port
