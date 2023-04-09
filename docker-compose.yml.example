@@ -10,7 +10,7 @@ services:
     environment:
       - MIX_ENV=prod
       - SECRET_KEY_BASE=your-secret-key-base
-      - DATABASE_URL=ecto://postgres:postgres_password@db:5432/elxrbb_prod
+      - DATABASE_URL=ecto://postgres:postgres_password@db:5432/elxrbb_dev
       - PORT=4000
       - HOST=localhost
 
