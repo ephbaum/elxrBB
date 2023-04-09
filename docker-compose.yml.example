@@ -13,6 +13,8 @@ services:
       - DATABASE_URL=ecto://postgres:postgres_password@db:5432/elxrbb_dev
       - PORT=4000
       - HOST=localhost
+    volumes:
+      - .:/app
 
   db:
     image: postgres:15-alpine
