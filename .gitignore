@@ -35,6 +35,3 @@ elxrBB-*.tar
 npm-debug.log
 /assets/node_modules/
 
-# DOCKER
-# hide your shameful secrets
-docker-compose.yml
