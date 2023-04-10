@@ -49,7 +49,9 @@ defmodule ElxrBB.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:pow, "~> 1.0.29"},
+      {:bcrypt_elixir, "~> 2.0"}
     ]
   end
 
