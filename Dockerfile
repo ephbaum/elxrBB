@@ -10,12 +10,25 @@ RUN apk add --update \
   postgresql-dev \
   yarn
 
+ARG UID=1000
+ARG GID=1000
+
+RUN addgroup -g $GID user \
+    && adduser -u $UID -G user -D -s /bin/sh user
+
+RUN mkdir -p /app
+RUN chown -R user:user /app
+COPY --chown=user:user . .
+
+# Set the working directory
+WORKDIR /app
+
+USER user
+
 # Install Hex and Rebar
 RUN mix local.hex --force && \
     mix local.rebar --force
 
-# Set the working directory
-WORKDIR /app
 
 # Copy required files
 COPY mix.exs mix.lock ./

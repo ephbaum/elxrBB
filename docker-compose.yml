@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    environment:
+      - MIX_ENV=prod
+      - SECRET_KEY_BASE=znoeB06BlDOUDgcX6oZXKwdsMrnT69ZS/1c5UM+qmJA/qWFh34dYPyPPEI9G4ass
+      - DATABASE_URL=ecto://postgres:postgres_password@db:5432/elxrbb_dev
+      - PORT=4000
+      - HOST=localhost
+    user: "1000:1000"
+    volumes:
+      - .:/app
+
+  db:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres_password
+      - POSTGRES_DB=elxrbb_dev
+
