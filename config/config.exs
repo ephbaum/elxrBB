@@ -18,7 +18,7 @@ config :elxrBB, ElxrBBWeb.Endpoint,
     layout: false
   ],
   pubsub_server: ElxrBB.PubSub,
-  live_view: [signing_salt: "WA2Z4c+4"]
+  live_view: [signing_salt: "5/k6IdSE"]
 
 # Configures the mailer
 #
@@ -59,6 +59,14 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :elxrBB, :pow,
+  web_mailer_module: ElxrBBWeb,
+  web_module: ElxrBBWeb,
+  user: ElxrBB.Users.User,
+  repo: ElxrBB.Repo,
+  extensions: [PowResetPassword, PowEmailConfirmation],
+  controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
+  mailer_backend: ElxrBB.Pow.Mailer
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"

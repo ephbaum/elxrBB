@@ -7,7 +7,7 @@ defmodule ElxrBBWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_elxrBB_key",
-    signing_salt: "WNOl+YVm",
+    signing_salt: "vO9imzQN",
     same_site: "Lax"
   ]
 
@@ -47,5 +47,6 @@ defmodule ElxrBBWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+  plug Pow.Plug.Session, otp_app: :elxrBB
   plug ElxrBBWeb.Router
 end
