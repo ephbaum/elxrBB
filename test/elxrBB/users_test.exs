@@ -40,9 +40,14 @@ defmodule ElxrBB.UsersTest do
       user = user_fixture()
       new_email = "updated@example.com"
       attrs = %{email: new_email, current_password: valid_user_password()}
-      {:ok, updated_user} = Users.update_user(user, attrs)
+      
+      # Call update_user/2 and store the result in a variable
+      update_result = Users.update_user(user, attrs)
 
-      assert updated_user.email == new_email
+      # Match the result with the {:ok, updated_user} tuple
+      {:ok, updated_user} = update_result
+
+      assert updated_user.unconfirmed_email == new_email
     end
 
     test "delete_user/1 deletes a user" do

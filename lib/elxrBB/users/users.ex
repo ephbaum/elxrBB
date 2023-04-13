@@ -14,10 +14,7 @@ defmodule ElxrBB.Users do
 
   def register_user(attrs), do: User.changeset(%User{}, attrs) |> Repo.insert()
 
-  def update_user(%User{} = user, attrs) do
-    updated_attrs = Map.put(attrs, :current_password, user.password_hash)
-    User.changeset(user, updated_attrs) |> Repo.update()
-  end
+  def update_user(%User{} = user, attrs), do: User.changeset(user, attrs) |> Repo.update()
 
   def delete_user(user), do: Repo.delete(user)
 end
