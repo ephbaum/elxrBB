@@ -35,3 +35,6 @@ elxrBB-*.tar
 npm-debug.log
 /assets/node_modules/
 
+
+# Ignore .vscode for now
+.vscode/
