@@ -1,9 +1,9 @@
-defmodule ElxrBB.Repo.Migrations.AddPreferredNameAndBioToUsers do
+defmodule ElxrBB.Repo.Migrations.AddUserameAndBioToUsers do
   use Ecto.Migration
 
   def change do
     alter table(:users) do
-      add :preferred_name, :string
+      add :username, :string
       add :bio, :string
     end
   end

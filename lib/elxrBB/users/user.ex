@@ -9,7 +9,7 @@ defmodule ElxrBB.Users.User do
   schema "users" do
     pow_user_fields()
 
-    field :preferred_name, :string
+    field :username, :string
     field :bio, :string
 
     timestamps()
