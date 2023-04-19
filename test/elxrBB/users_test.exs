@@ -7,7 +7,7 @@ defmodule ElxrBB.UsersTest do
   defp user_fixture(attrs \\ %{}) do
     {:ok, user} =
       attrs
-      |> Enum.into(%{email: "test@example.com", password: "password", password_confirmation: "password"})
+      |> Enum.into(%{email: "test@example.com", password: "password", password_confirmation: "password", username: "username", bio: "biographical information goes here"})
       |> Users.register_user()
 
     user
