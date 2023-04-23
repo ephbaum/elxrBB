@@ -20,7 +20,8 @@ defmodule ElxrBBWeb.Router do
   scope "/" do
     pipe_through :browser
 
-    pow_routes()
+    pow_session_routes()
+    # pow_routes()
     pow_extension_routes()
   end
 
