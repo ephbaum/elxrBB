@@ -114,4 +114,58 @@ defmodule ElxrBB.ForumsTest do
       assert %Ecto.Changeset{} = Forums.change_topic(topic)
     end
   end
+
+  describe "replies" do
+    alias ElxrBB.Forums.Reply
+
+    import ElxrBB.ForumsFixtures
+
+    @invalid_attrs %{body: nil}
+
+    test "list_replies/0 returns all replies" do
+      reply = reply_fixture()
+      assert Forums.list_replies() == [reply]
+    end
+
+    test "get_reply!/1 returns the reply with given id" do
+      reply = reply_fixture()
+      assert Forums.get_reply!(reply.id) == reply
+    end
+
+    test "create_reply/1 with valid data creates a reply" do
+      valid_attrs = %{body: "some body"}
+
+      assert {:ok, %Reply{} = reply} = Forums.create_reply(valid_attrs)
+      assert reply.body == "some body"
+    end
+
+    test "create_reply/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Forums.create_reply(@invalid_attrs)
+    end
+
+    test "update_reply/2 with valid data updates the reply" do
+      reply = reply_fixture()
+      update_attrs = %{body: "some updated body"}
+
+      assert {:ok, %Reply{} = reply} = Forums.update_reply(reply, update_attrs)
+      assert reply.body == "some updated body"
+    end
+
+    test "update_reply/2 with invalid data returns error changeset" do
+      reply = reply_fixture()
+      assert {:error, %Ecto.Changeset{}} = Forums.update_reply(reply, @invalid_attrs)
+      assert reply == Forums.get_reply!(reply.id)
+    end
+
+    test "delete_reply/1 deletes the reply" do
+      reply = reply_fixture()
+      assert {:ok, %Reply{}} = Forums.delete_reply(reply)
+      assert_raise Ecto.NoResultsError, fn -> Forums.get_reply!(reply.id) end
+    end
+
+    test "change_reply/1 returns a reply changeset" do
+      reply = reply_fixture()
+      assert %Ecto.Changeset{} = Forums.change_reply(reply)
+    end
+  end
 end

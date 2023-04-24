@@ -33,4 +33,18 @@ defmodule ElxrBB.ForumsFixtures do
 
     topic
   end
+
+  @doc """
+  Generate a reply.
+  """
+  def reply_fixture(attrs \\ %{}) do
+    {:ok, reply} =
+      attrs
+      |> Enum.into(%{
+        body: "some body"
+      })
+      |> ElxrBB.Forums.create_reply()
+
+    reply
+  end
 end
