@@ -11,6 +11,7 @@ defmodule ElxrBBWeb.Router do
     plug :put_root_layout, {ElxrBBWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Pow.Plug.Session, otp_app: :elxrBB
   end
 
   pipeline :api do
@@ -26,6 +27,21 @@ defmodule ElxrBBWeb.Router do
 
   scope "/", ElxrBBWeb do
     pipe_through :browser
+
+    live "/forums", ForumLive.Index, :index
+    live "/forums/new", ForumLive.Index, :new
+    live "/forums/:id", ForumLive.Show, :show
+    live "/forums/:id/edit", ForumLive.Index, :edit
+  
+    live "/topics", TopicLive.Index, :index
+    live "/topics/new", TopicLive.Index, :new
+    live "/topics/:id", TopicLive.Show, :show
+    live "/topics/:id/edit", TopicLive.Index, :edit
+  
+    live "/replies", ReplyLive.Index, :index
+    live "/replies/new", ReplyLive.Index, :new
+    live "/replies/:id", ReplyLive.Show, :show
+    live "/replies/:id/edit", ReplyLive.Index, :edit
 
     get "/", PageController, :home
   end

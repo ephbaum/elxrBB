@@ -9,10 +9,10 @@
       </p>
     </div>
     <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900">
-      <.link :if={Pow.Plug.current_user(@conn)} href={~p"/session"} method="delete">Sign out</.link>
-      <.link :if={is_nil Pow.Plug.current_user(@conn)} navigate={~p"/registration/new"}>Registration</.link>
-      <span class="mx-2" :if={is_nil Pow.Plug.current_user(@conn)}>|</span>
-      <.link :if={is_nil Pow.Plug.current_user(@conn)} navigate={~p"/session/new"}>Sign In</.link> 
+      <.link :if={assigns[:current_user]} href={~p"/session"} method="delete">Sign out</.link>
+      <.link :if={is_nil assigns[:current_user]} navigate={~p"/registration/new"}>Registration</.link>
+      <span class="mx-2" :if={is_nil assigns[:current_user]}>|</span>
+      <.link :if={is_nil assigns[:current_user]} navigate={~p"/session/new"}>Sign In</.link>
     </div>
   </div>
 </header>
